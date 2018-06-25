@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" type="text/css"/>
+		<title>MVC With Cats!</title>
+		<script src="https://code.jquery.com/jquery.js"></script>
+	</head>
+	<body>
+		{{{ body }}}
+    <script>
+        $(function(){
+            $(".eat").on("click", function(event){
+                var id = $(this).data("id");
+            });
+            $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newBurger
+            }).then(
+                function() {
+                    console.log(newBurger);
+                    location.reload();
+                }
+            );
+        });
+    </script>
+	</body>
+</html>
