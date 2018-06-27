@@ -18,7 +18,7 @@
                 {{#unless devoured}}
                     <li>
                         {{burger_name}}
-                        <button class="eat" data-id="{{id}}" data-devoured="{{devoured}}">
+                        <button class="eat" data-id="{{this.id}}" data-devoured="{{this.devoured}}">
                         {{#unless devoured}}Devour it!{{/unless}}
                         </button>
                     </li>
@@ -49,7 +49,7 @@
                     <input type="text" id="burg" name="name">
                 </div>
 
-                <button class="add" type="submit">Cook!</button>
+                <button id = "add" type="submit">Cook!</button>
                 </form>
         </div>
     </div>

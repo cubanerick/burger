@@ -14,7 +14,7 @@ var orm = {
         var queryString = "INSERT INTO " + table + " (" + colname + ") " + "VALUES (" + val + ")";
   
         console.log(queryString);
-        connection.query(queryString, vals, function(err, result) {
+        connection.query(queryString, val, function(err, result) {
         if (err) {
           throw err;
         }
@@ -22,17 +22,18 @@ var orm = {
         cb(result);
         });
     },
-    updateOne: function(table, colname, val, id, cb) {
-        var queryString = "UPDATE " + table + " SET " + colname + "=" + val + " WHERE id = " + id; 
-
-        console.log(queryString);
-        connection.query(queryString, vals, function(err, result) {
-            if (err) {
-            throw err;
-            }
-
-            cb(result);
-        });
+    updateOne: function(table, col, val, id, cb) {
+      var queryString = "UPDATE " + table + " SET " + col + " = " + val + " WHERE id=" + id;
+  
+    
+      console.log(queryString);
+      connection.query(queryString, function(err, result) {
+        if (err) {
+          throw err;
+        }
+  
+        cb(result);
+      });
     },
    
 };

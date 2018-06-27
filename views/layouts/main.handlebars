@@ -12,16 +12,28 @@
         $(function(){
             $(".eat").on("click", function(event){
                 var id = $(this).data("id");
-            });
-            $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: newBurger
-            }).then(
-                function() {
-                    console.log(newBurger);
+                console.log(id);
+                
+                $.ajax("/api/burgers/" + id, {
+                type: "PUT",
+                data: {devoured: true}
+                }).then(function() {
+                    console.log("devoured");
                     location.reload();
-                }
-            );
+                });
+            });
+
+            $("#add").on("click", function(event) {
+                event.preventDefault();
+
+                var newBurger = JSON.stringify($("#burg").val().trim());
+                console.log(newBurger);
+                
+                $.post("/api/newburger", {newBurger: newBurger}).then(function() {
+                    console.log("created new burger");
+                    location.reload();
+                });
+            });
         });
     </script>
 	</body>
